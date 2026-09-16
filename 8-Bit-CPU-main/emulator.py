@@ -25,7 +25,7 @@ import re
 import sys
 from pathlib import Path
 
-# ─── Control-signal bit definitions (matches EEPROM1/2/3 from ROM generator) ─
+#  Control-signal bit definitions (matches EEPROM1/2/3 from ROM generator)
 
 EEPROM1_BITS = ["IROM_OUT", "RAM_OUT", "RAM_IN", "IR_IN",
                 "MAR_LOW_IN", "MAR_HIGH_IN", "PC_INC", "PC_LOAD"]

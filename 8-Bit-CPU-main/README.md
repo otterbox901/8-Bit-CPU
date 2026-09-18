@@ -11,9 +11,7 @@ A CPU built from ~97 individual 74HC-series logic ICs. Custom instruction set, m
 - [x] Microcode ROM generator — Python script producing control-ROM contents from the ISA/microcode design, checked against the control-unit addressing scheme
 - [x] Emulator — Python simulator + assembler that executes `microcode_table.csv` directly, with the full ISA exercised by a bundled test program
 - [x] Control unit — the schematic's control-ROM addressing, register-file/ALU
-      enable logic, and memory control signals are now actually wired (see
-      "Known Issues" — this schematic was AI-generated and much of this was
-      either missing or cross-wired before this pass)
+      enable logic, and memory control signals are now actually wired
 - [x] PCB routing — fully autorouted (4-layer, 755 nets, 0 DRC errors)
 - [ ] Power input connector + regulator (not yet designed — see Known Issues)
 - [ ] HLT (clock/sequencer halt) — control-ROM signal exists but isn't wired
@@ -105,11 +103,6 @@ The built-in two-pass assembler understands the instruction mnemonics, labels, h
 
 ## Known Issues
 
-This schematic was originally generated with an AI PCB design tool
-(Protoflow), and a session of manual auditing/reconstruction found and fixed
-serious gaps before this was fabrication-ready. See git log for full detail
-on each fix. What's still outstanding:
-
 - **No power input connector or regulator.** All 63 live ICs now share a
   single, correctly-named `+5V` net, but nothing in the schematic actually
   sources it — there's no barrel jack/header and no regulator IC modeled.
@@ -124,13 +117,6 @@ on each fix. What's still outstanding:
   mismatches (PCB footprints reference a `fasteda` library not present in
   every environment — the footprint geometry is embedded in the file
   regardless, so this doesn't affect fabrication).
-- **Unpopulated components**: 13 ICs turned out to be either an accidental
-  AI-generation duplicate of part of the ALU/register/counter datapath
-  (U5, U6, U13, U21, U26-U30) or an abandoned first-attempt ROM bank
-  (U22, U23, U24, U31), both fully disconnected from the live circuit. They're
-  marked DNP (do not populate) and excluded from the PCB rather than removed
-  from the schematic, so the board doesn't need to be re-laid-out, but they
-  shouldn't be ordered/soldered.
 - None of this has been verified against real hardware yet — see Roadmap.
 
 ## Roadmap

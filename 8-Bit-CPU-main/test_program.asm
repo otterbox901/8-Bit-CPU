@@ -1,5 +1,6 @@
-; 
-;  test_program.asm — 8-bit CPU full instruction-set test 
+; ═══════════════════════════════════════════════════════════════════════════
+;  test_program.asm — 8-bit CPU full instruction-set test
+; ═══════════════════════════════════════════════════════════════════════════
 ;
 ; Pre-loaded data RAM (set via .ram directives):
 ;   RAM[0x0100] = 0xAA    RAM[0x0101] = 0x55    RAM[0x0102] = 0x0F
